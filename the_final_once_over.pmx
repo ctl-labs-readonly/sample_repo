@@ -1,0 +1,73 @@
+---
+name: The final once over
+description: description!!!
+keywords: key, word
+recommended: 
+type: Magento
+documentation: "This is my super cool heading\r\n=============================\r\n\r\nHere
+  comes my bullet list\r\n\r\n- First\r\n- Second\r\n- Third\r\n\r\nHere is some regular
+  content.\r\n\r\nMore regular content.\r\n\r\nsome additional content\r\n"
+images:
+- :category: DB Tier
+  :name: DB
+  :repository: panamax/panamax-docker-mysql
+  :tag: latest
+  :description: MySQL
+  :type: mysql
+  :expose: []
+  :ports:
+  - host_port: 3306
+    container_port: 3306
+  :links: []
+  :environment:
+    MYSQL_ROOT_PASSWORD: pass@word01
+  :volumes: []
+- :category: 
+  :name: panamax_panamax-docker-mysql
+  :repository: Image
+  :tag: " panamax/panamax-docker-mysql"
+  :description: 
+  :type: 
+  :expose: []
+  :ports: []
+  :links: []
+  :environment: {}
+  :volumes: []
+- :category: 
+  :name: redis
+  :repository: Image
+  :tag: " redis"
+  :description: 
+  :type: 
+  :expose: []
+  :ports: []
+  :links: []
+  :environment: {}
+  :volumes: []
+- :category: 
+  :name: sequenceiq_hadoop-docker
+  :repository: Image
+  :tag: " sequenceiq/hadoop-docker"
+  :description: 
+  :type: 
+  :expose: []
+  :ports: []
+  :links: []
+  :environment: {}
+  :volumes: []
+- :category: Web Tier
+  :name: WP
+  :repository: panamax/panamax-docker-wordpress
+  :tag: latest
+  :description: Wordpress
+  :type: wordpress
+  :expose: []
+  :ports:
+  - host_port: 8080
+    container_port: 80
+  :links:
+  - service: DB
+    alias: DB_1
+  :environment:
+    DB_PASSWORD: pass@word01
+  :volumes: []
