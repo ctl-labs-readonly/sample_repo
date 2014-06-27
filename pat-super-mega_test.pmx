@@ -1,0 +1,10 @@
+---
+name: Pat-super-mega test
+description: This is a sample description
+keywords: wordpress, eleasticsearch
+recommended: 
+type: Magento
+documentation: "This a a Test\r\n=============================\r\n\r\nDo this:\r\n\r\n-
+  First\r\n- Second\r\n- Third\r\n\r\nHere is some regular content.\r\n\r\nMore regular
+  content.\r\n"
+images: []
