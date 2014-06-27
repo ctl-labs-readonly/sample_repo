@@ -1,0 +1,10 @@
+---
+name: Alex test 1
+description: some description
+keywords: ''
+recommended: 
+type: HuBot
+documentation: "This is my super cool heading\r\n=============================\r\n\r\nHere
+  comes my bullet list\r\n\r\n- First\r\n- Second\r\n- Third\r\n\r\nHere is some regular
+  content.\r\n\r\nMore regular content.\r\n"
+images: []
