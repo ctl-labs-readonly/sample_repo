@@ -33,7 +33,7 @@ images:
     container_port: '80'
   :links:
   - service: tutum_influxdb
-    alias: tutum_influxdb
+    alias: INFLUXDB
   :environment: !ruby/hash:ActionController::Parameters
     HTTP_USER: admin
     HTTP_PASS: pa$$w0rd
