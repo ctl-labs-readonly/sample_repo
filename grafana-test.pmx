@@ -1,0 +1,40 @@
+---
+name: grafana-test
+description: ''
+keywords: ''
+recommended: 
+type: Default
+documentation: ''
+images:
+- :category: 
+  :name: tutum_influxdb
+  :repository: Image
+  :tag: " tutum/influxdb"
+  :description: 
+  :type: Default
+  :expose: []
+  :ports:
+  - !ruby/hash:ActionController::Parameters
+    host_port: '8086'
+    container_port: '8086'
+  :links: []
+  :environment: !ruby/hash:ActionController::Parameters {}
+  :volumes: []
+- :category: 
+  :name: tutum_grafana
+  :repository: tutum/grafana
+  :tag: latest
+  :description: 
+  :type: Default
+  :expose: []
+  :ports:
+  - !ruby/hash:ActionController::Parameters
+    host_port: '80'
+    container_port: '80'
+  :links:
+  - service: tutum_influxdb
+    alias: tutum_influxdb
+  :environment: !ruby/hash:ActionController::Parameters
+    HTTP_USER: admin
+    HTTP_PASS: pa$$w0rd
+  :volumes: []
