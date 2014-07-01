@@ -1,6 +1,6 @@
 ---
-name: grafana
-description: testing grafana and influxdb
+name: Grafana
+description: My Grafana template
 keywords: grafana, influxdb
 recommended: 
 type: Default
@@ -27,9 +27,14 @@ images:
   :description: 
   :type: Default
   :expose: []
-  :ports: []
+  :ports:
+  - !ruby/hash:ActionController::Parameters
+    host_port: '80'
+    container_port: '80'
   :links:
   - service: tutum_influxdb
     alias: tutum_influxdb
-  :environment: !ruby/hash:ActionController::Parameters {}
+  :environment: !ruby/hash:ActionController::Parameters
+    HTTP_USER: admin
+    HTTP_PASS: pa$$w0rd
   :volumes: []
