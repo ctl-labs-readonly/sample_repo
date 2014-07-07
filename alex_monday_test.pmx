@@ -1,0 +1,19 @@
+---
+name: Alex Monday test
+description: with env as array
+keywords: ''
+recommended: 
+type: Default
+documentation: ''
+images:
+- category: 
+  name: wordpress
+  repository: wordpress
+  tag: latest
+  description: 
+  type: Default
+  expose: []
+  ports: []
+  links: []
+  environment: {}
+  volumes: []
