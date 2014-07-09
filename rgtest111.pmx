@@ -1,0 +1,55 @@
+---
+name: rgtest111
+description: ''
+keywords: ''
+recommended: 
+type: Default
+documentation: "This is my super cool heading\r\n=============================\r\n\r\nHere
+  comes my bullet list\r\n\r\n- First\r\n- Second\r\n- Third\r\n\r\nHere is some regular
+  content.\r\n\r\nMore regular content.\r\n"
+images:
+- category: 
+  name: DB
+  repository: panamax/panamax-docker-mysql
+  tag: latest
+  description: MySQL
+  type: mysql
+  expose: []
+  ports:
+  - host_port: '3306'
+    container_port: '3306'
+  links: []
+  environment:
+  - variable: MYSQL_ROOT_PASSWORD
+    value: pass@word01
+  - variable: TEST_2
+    value: value_2
+  volumes: []
+- category: DB Tier
+  name: tutum_elasticsearch
+  repository: tutum/elasticsearch
+  tag: latest
+  description: 
+  type: Default
+  expose: []
+  ports: []
+  links: []
+  environment: []
+  volumes: []
+- category: Web Tier
+  name: WP
+  repository: panamax/panamax-docker-wordpress
+  tag: latest
+  description: Wordpress
+  type: wordpress
+  expose: []
+  ports:
+  - host_port: 8080
+    container_port: 80
+  links:
+  - service: DB
+    alias: DB_1
+  environment:
+  - variable: DB_PASSWORD
+    value: pass@word01
+  volumes: []
