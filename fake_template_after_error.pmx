@@ -1,0 +1,48 @@
+---
+name: Fake Template After Error
+description: ''
+keywords: ''
+recommended: 
+type: Default
+documentation: "This is my super cool heading\r\n=============================\r\n\r\nHere
+  comes my bullet list\r\n\r\n- First\r\n- Second\r\n- Third\r\n\r\nHere is some regular
+  content.\r\n\r\nMore regular content.\r\n"
+images:
+- :category: DB Tier
+  :name: DB
+  :source: panamax/panamax-docker-mysql
+  :description: MySQL
+  :type: mysql
+  :expose: []
+  :ports:
+  - host_port: 3306
+    container_port: 3306
+  :links: []
+  :environment:
+    MYSQL_ROOT_PASSWORD: pass@word01
+  :volumes: []
+- :category: DB Tier
+  :name: dockerfile_haproxy
+  :source: dockerfile/haproxy:latest
+  :description: 
+  :type: Default
+  :expose: []
+  :ports: []
+  :links: []
+  :environment: {}
+  :volumes: []
+- :category: Web Tier
+  :name: WP
+  :source: panamax/panamax-docker-wordpress
+  :description: Wordpress
+  :type: wordpress
+  :expose: []
+  :ports:
+  - host_port: 8080
+    container_port: 80
+  :links:
+  - service: DB
+    alias: DB_1
+  :environment:
+    DB_PASSWORD: pass@word01
+  :volumes: []
