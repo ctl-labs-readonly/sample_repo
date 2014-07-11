@@ -12,7 +12,7 @@ documentation: |-
   The template exposes port 80 in the container to port 8080 on the Docker host.  In order to view the WordPress admin console after running the template, ensure that the virtual machine serving as the Docker host is forwarding a port to port 8080 on the host.
 images:
 - category: DB Tier
-  name: DB_1
+  name: DB_2
   source: panamax/panamax-docker-mysql
   description: MySQL
   type: mysql
@@ -26,7 +26,7 @@ images:
     value: pass@word01
   volumes: []
 - category: Web Tier
-  name: WP_1
+  name: WP_2
   source: panamax/panamax-docker-wordpress
   description: Wordpress
   type: wordpress
@@ -35,7 +35,7 @@ images:
   - host_port: 8080
     container_port: 80
   links:
-  - service: DB_1
+  - service: DB_2
     alias: DB_1
   environment:
   - variable: DB_PASSWORD
