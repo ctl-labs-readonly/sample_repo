@@ -1,25 +1,18 @@
 ---
-name: Wordpress
-description: Wordpress template
-keywords: wordpress, mysql
-recommended: true
-type: wordpress
-documentation: |
-  This is my super cool heading
-  =============================
+name: Runscope_Test
+description: this is cool
+keywords: snot
+recommended: 
+type: Wordpress
+documentation: |-
+  # Wordpress
 
-  Here comes my bullet list
+  This is a WordPress template based on the [panamax/panamax-docker-wordpress](https://index.docker.io/u/panamax/panamax-docker-wordpress/) and [panamax/panamax-docker-mysql](https://index.docker.io/u/panamax/panamax-docker-mysql/) images.
 
-  - First
-  - Second
-  - Third
-
-  Here is some regular content.
-
-  More regular content.
+  The template exposes port 80 in the container to port 8080 on the Docker host.  In order to view the WordPress admin console after running the template, ensure that the virtual machine serving as the Docker host is forwarding a port to port 8080 on the host.
 images:
 - category: DB Tier
-  name: DB
+  name: DB_1
   source: panamax/panamax-docker-mysql
   description: MySQL
   type: mysql
@@ -33,7 +26,7 @@ images:
     value: pass@word01
   volumes: []
 - category: Web Tier
-  name: WP
+  name: WP_1
   source: panamax/panamax-docker-wordpress
   description: Wordpress
   type: wordpress
@@ -42,7 +35,7 @@ images:
   - host_port: 8080
     container_port: 80
   links:
-  - service: DB
+  - service: DB_1
     alias: DB_1
   environment:
   - variable: DB_PASSWORD
