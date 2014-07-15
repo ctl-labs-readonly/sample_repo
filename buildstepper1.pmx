@@ -1,12 +1,12 @@
 ---
 name: buildstepper1
-description: just a test
+description: another test
 keywords: ''
 recommended: 
 type: Default
 documentation: ''
 images:
-- id: 9
+- id: 10
   category: Web Tier
   name: MyWebApp
   source: centurylinklabs/buildstepper:latest
