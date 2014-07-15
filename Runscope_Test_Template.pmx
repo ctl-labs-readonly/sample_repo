@@ -13,7 +13,7 @@ documentation: |-
 images:
 - id: 8
   category: DB Tier
-  name: DB
+  name: DB_1
   source: panamax/panamax-docker-mysql
   description: MySQL
   type: mysql
@@ -29,7 +29,7 @@ images:
   command: []
 - id: 9
   category: Web Tier
-  name: WP
+  name: WP_1
   source: panamax/panamax-docker-wordpress
   description: Wordpress
   type: wordpress
@@ -38,7 +38,7 @@ images:
   - host_port: 8080
     container_port: 80
   links:
-  - service: DB
+  - service: DB_1
     alias: DB_1
   environment:
   - variable: DB_PASSWORD
