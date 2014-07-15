@@ -1,0 +1,28 @@
+---
+name: buildstepper-again
+description: ''
+keywords: ''
+recommended: 
+type: Default
+documentation: ''
+images:
+- id: 11
+  category: Web Tier
+  name: MyWebApp
+  source: centurylinklabs/buildstepper:latest
+  description: My Web App running in-container
+  type: Default
+  expose:
+  - '80'
+  ports:
+  - container_port: '80'
+  links: []
+  environment:
+  - variable: PORT
+    value: '80'
+    required: ''
+  - variable: GIT_REPO
+    value: https://github.com/fermayo/hello-world-php.git
+    required: 'true'
+  volumes: []
+  command: []
