@@ -2,7 +2,6 @@
 name: Runscope_Test
 description: this is cool
 keywords: snot
-recommended: 
 type: Wordpress
 documentation: |-
   # Wordpress
@@ -11,29 +10,20 @@ documentation: |-
 
   The template exposes port 80 in the container to port 8080 on the Docker host.  In order to view the WordPress admin console after running the template, ensure that the virtual machine serving as the Docker host is forwarding a port to port 8080 on the host.
 images:
-- id: 14
-  category: DB Tier
-  name: DB_1
+- name: DB_1
   source: panamax/panamax-docker-mysql
-  description: MySQL
+  category: DB Tier
   type: mysql
-  expose: []
   ports:
   - host_port: 3306
     container_port: 3306
-  links: []
   environment:
   - variable: MYSQL_ROOT_PASSWORD
     value: pass@word01
-  volumes: []
-  command: []
-- id: 15
-  category: Web Tier
-  name: WP_1
+- name: WP_1
   source: panamax/panamax-docker-wordpress
-  description: Wordpress
+  category: Web Tier
   type: wordpress
-  expose: []
   ports:
   - host_port: 8080
     container_port: 80
@@ -43,5 +33,3 @@ images:
   environment:
   - variable: DB_PASSWORD
     value: pass@word01
-  volumes: []
-  command: []
