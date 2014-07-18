@@ -1,0 +1,48 @@
+---
+name: gitlab_test
+description: ''
+keywords: ''
+type: Default
+documentation: ''
+images:
+- name: panamax_panamax-docker-mysql_latest
+  source: panamax/panamax-docker-mysql:latest
+  category: DB
+  type: Default
+  environment:
+  - variable: MYSQL_ROOT_PASSWORD
+    value: pass@word01
+  - variable: MYSQL_DATABASE
+    value: gitlab
+  - variable: MYSQL_USER
+    value: bob
+  - variable: MYSQL_PASSWORD
+    value: pass@word02
+- name: sameersbn_redis
+  source: sameersbn/redis:latest
+  category: DB
+  type: Default
+- name: centurylinklabs_gitlab
+  source: centurylinklabs/gitlab:latest
+  category: Web
+  type: Default
+  ports:
+  - host_port: '8080'
+    container_port: '10080'
+    proto: TCP
+  links:
+  - service: panamax_panamax-docker-mysql_latest
+    alias: mysql
+  - service: sameersbn_redis
+    alias: redisio
+  environment:
+  - variable: DB_USER
+    value: bob
+  - variable: DB_PASS
+    value: pass@word02
+  - variable: DB_NAME
+    value: gitlab
+  - variable: GITLAB_PORT
+    value: '10080'
+  - variable: GITLAB_SSH_PORT
+    value: '10022'
