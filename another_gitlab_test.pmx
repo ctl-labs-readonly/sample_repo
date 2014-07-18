@@ -1,0 +1,37 @@
+---
+name: another_gitlab_test
+description: ''
+keywords: ''
+type: Default
+documentation: ''
+images:
+- name: paintedfox_postgresql_latest
+  source: paintedfox/postgresql:latest
+  type: Default
+  environment:
+  - variable: DB
+    value: gitlab
+  - variable: USER
+    value: gitlabuser
+  - variable: PASS
+    value: password
+- name: centurylinklabs_gitlab
+  source: centurylinklabs/gitlab:latest
+  type: Default
+  ports:
+  - host_port: '10022'
+    container_port: '22'
+    proto: TCP
+  - host_port: '10080'
+    container_port: '80'
+    proto: TCP
+  links:
+  - service: paintedfox_postgresql_latest
+    alias: postgresql
+  environment:
+  - variable: DB_USER
+    value: gitlabuser
+  - variable: DB_PASS
+    value: password
+  - variable: DB_NAME
+    value: gitlab
