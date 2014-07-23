@@ -1,0 +1,31 @@
+---
+name: Twitter Birdwatch
+description: "This is a template forked from https://github.com/matthiasn/BirdWatch\r\n\r\nCreated
+  by Matthias Nehlsen\r\n\r\nIt pulls twitter posts based on several topics provided
+  and indexes them in an elasticsearch database"
+keywords: twitter,topics,birdwatch,centurylink
+type: Java
+documentation: "Instructions\r\n====================\r\n\r\nThe environment variable:\r\n\r\nBIRDWATCH_TOPICS
+  must be set as a list of topic for the application to look for.\r\n\r\nAn example
+  setting could be: BIRDWATCH_TOPICS=ruby,centurylink,panamax,docker\r\n\r\nIf you
+  want to reach the application from the outside world then a port must be mapped
+  to 9000.\r\n\r\nHappy Tweet Watching!"
+images:
+- name: dockerfile_elasticsearch_latest
+  source: dockerfile/elasticsearch:latest
+  category: Database
+  type: Default
+- name: panamax_birdwatch
+  source: panamax/birdwatch:latest
+  category: Application
+  type: Default
+  ports:
+  - host_port: '9000'
+    container_port: '9000'
+    proto: TCP
+  links:
+  - service: dockerfile_elasticsearch_latest
+    alias: db
+  environment:
+  - variable: BIRDWATCH_TOPICS
+    value: coreos,centurylink,docker,panamax,clojure,ruby,microservices
