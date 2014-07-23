@@ -1,0 +1,31 @@
+---
+name: Socialize!
+description: IPO'ing in Q4
+keywords: social
+type: Rails
+documentation: will pull down Alex's github activity log
+images:
+- name: redis_latest
+  source: redis:latest
+  type: Default
+- name: postgres
+  source: postgres:latest
+  type: Default
+- name: api
+  source: api:latest
+  type: Default
+  ports:
+  - host_port: '3001'
+    container_port: '3000'
+    proto: TCP
+  links:
+  - service: postgres
+    alias: postgres
+- name: etl
+  source: etl:latest
+  type: Default
+  links:
+  - service: redis_latest
+    alias: redis
+  - service: api
+    alias: api
