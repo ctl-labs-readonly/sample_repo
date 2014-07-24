@@ -1,0 +1,26 @@
+---
+name: Concrete5 CMS All In One
+description: Contains the Concrete5 CMS system complete with database. All you need
+  to provide is a port link for access.
+keywords: concrete, concrete5, cms, php
+type: LAMP
+documentation: |-
+  Concrete5 CMS
+  ---------------------
+
+  The Concrete5 CMS system is a great way to get to create a website if you don't want to get your HTML hands dirty.
+
+  ### Configuration
+
+  To access your website you need to create a link to port 80 of the application. This is found on the service configuration screen. You can choose any open host port and map it to 80 on the container. For example 9000:80.
+
+  Once that is complete open your browser to: http://localhost:[your_port]/c5
+images:
+- name: panamax_concrete5-dev_latest
+  source: panamax/concrete5-dev:latest
+  category: The App
+  type: Default
+  ports:
+  - host_port: '9000'
+    container_port: '80'
+    proto: TCP
