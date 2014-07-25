@@ -1,0 +1,16 @@
+---
+name: cooliotest
+description: "Piwik\r\n=====\r\nThis template creates a multi-container application
+  consisting of a containerrunning cbeer/piwik linked to an instance of panamax/panamax-docker-mysql.\r\n\r\nUpon
+  accessing the Piwik web application the first time, you will be prompted to enter
+  the MySQL user and password.  By default, the MySQL image is run with the root user
+  password set to pass@word01.\r\n\r\nAdditionally, you will be prompted to enter
+  the location of the MySQL server.The IP address of the server can be found by inspecting
+  the Docker containerdetails with Docker inspect in panamax ssh."
+keywords: ''
+type: Default
+documentation: ''
+images:
+- name: abcrawf_awscli_latest
+  source: abcrawf/awscli:latest
+  type: Default
