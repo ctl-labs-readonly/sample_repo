@@ -1,0 +1,25 @@
+---
+name: MikeyTest
+description: ughain
+keywords: ugh, blah, meh
+type: Default
+documentation: |
+  CenturyLinkLabs/buildpack-runner
+  ============================
+  It's my GitHub repo code running in-container via Panamax.
+images:
+- name: MyWebApp
+  source: centurylinklabs/buildpack-runner:latest
+  category: Web Tier
+  type: Default
+  expose:
+  - '80'
+  ports:
+  - host_port: '8080'
+    container_port: '80'
+    proto: TCP
+  environment:
+  - variable: PORT
+    value: '80'
+  - variable: GIT_REPO
+    value: https://github.com/fermayo/hello-world-php.git
