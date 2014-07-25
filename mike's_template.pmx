@@ -1,0 +1,34 @@
+---
+name: Mike's Template
+description: a template test
+keywords: blah, blah, blah
+type: Default
+documentation: |
+  CenturyLinkLabs/buildpack-runner
+  ============================
+  It's my GitHub repo code running in-container via Panamax.
+images:
+- name: MyWebApp
+  source: centurylinklabs/buildpack-runner:latest
+  category: Web Tier
+  type: Default
+  expose:
+  - '80'
+  ports:
+  - host_port: '8080'
+    container_port: '80'
+    proto: TCP
+  links:
+  - service: panamax_panamax-docker-mysql
+    alias: panamax_panamax-docker-mysql
+  environment:
+  - variable: PORT
+    value: '80'
+  - variable: GIT_REPO
+    value: https://github.com/fermayo/hello-world-php.git
+- name: panamax_panamax-docker-mysql
+  source: panamax/panamax-docker-mysql:latest
+  category: Web Tier
+  type: Default
+  expose:
+  - '3306'
