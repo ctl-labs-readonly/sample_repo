@@ -1,0 +1,75 @@
+---
+name: bjd-socialize
+description: ''
+keywords: ''
+type: Default
+documentation: |-
+  will pull down Alex's github activity log
+
+  - modify the API_PORT in the ui container to point to the publicly exposed API port (may require Vagrantfile config)*
+  - modify the GITHUB_FEED_URL in the etl container to point to the desired github atom feed
+
+  ![diagram](http://www.gliffy.com/go/publish/image/5993606/M.png)
+images:
+- name: redis_latest_1
+  source: redis:latest
+  category: WORKERS
+  type: Default
+- name: postgres_1
+  source: postgres:latest
+  category: API
+  type: Default
+- name: api_1
+  source: centurylinklabs/socialize-api:latest
+  category: API
+  type: Default
+  ports:
+  - host_port: '3001'
+    container_port: '3000'
+    proto: TCP
+  links:
+  - service: postgres_1
+    alias: postgres
+  - service: centurylinklabs_errbit_1
+    alias: errbit
+- name: etl_1
+  source: centurylinklabs/socialize-etl:latest
+  category: WORKERS
+  type: Default
+  links:
+  - service: redis_latest_1
+    alias: redis
+  - service: api_1
+    alias: api
+  environment:
+  - variable: GITHUB_FEED_URL
+    value: https://github.com/alexwelch.atom
+- name: ui_1
+  source: centurylinklabs/socialize-ui:latest
+  category: UI
+  type: Default
+  ports:
+  - host_port: '81'
+    container_port: '80'
+    proto: TCP
+  environment:
+  - variable: API_PORT
+    value: '3001'
+- name: centurylinklabs_errbit_1
+  source: centurylinklabs/errbit:0.3.0-dev
+  category: SUPPORT
+  type: Default
+  ports:
+  - host_port: '8890'
+    container_port: '3000'
+    proto: TCP
+  links:
+  - service: mongo_1
+    alias: mongodb
+- name: mongo_1
+  source: mongo:2.6
+  category: SUPPORT
+  type: Default
+  volumes:
+  - host_path: "/data/db"
+    container_path: "/data/db"
