@@ -1,12 +1,12 @@
 ---
 name: MikeyTest
-description: blahblahblah
-keywords: asdf,sadf,qwer
+description: this doesn't matter
+keywords: blahblahblah, foo
 type: Default
 documentation: |
   CenturyLinkLabs/buildpack-runner
   ============================
-  It's my GitHub repo code running in-container via Panamax.
+  It's just another GitHub repo code running in-container via Panamax.
 images:
 - name: MyWebApp
   source: centurylinklabs/buildpack-runner:latest
