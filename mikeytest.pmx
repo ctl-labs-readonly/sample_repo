@@ -1,7 +1,7 @@
 ---
 name: MikeyTest
-description: ughain
-keywords: ugh, blah, meh
+description: blahblahblah
+keywords: asdf,sadf,qwer
 type: Default
 documentation: |
   CenturyLinkLabs/buildpack-runner
