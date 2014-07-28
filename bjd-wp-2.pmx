@@ -1,0 +1,10 @@
+---
+name: bjd-wp-2
+description: ''
+keywords: ''
+type: Default
+documentation: "are\nthere\n\nnewlines\n\nin \n\nthe output"
+images:
+- name: panamax_panamax-docker-wordpress_latest_1
+  source: panamax/panamax-docker-wordpress:latest
+  type: Default
