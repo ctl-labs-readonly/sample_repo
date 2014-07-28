@@ -1,0 +1,22 @@
+---
+name: bjd-wp-deleteme
+description: foo bar
+keywords: foo, bar
+type: Default
+documentation: |-
+  This is some text
+
+  Let's see what the markdown looks
+
+  like when
+
+  * It
+  * is
+  * serialized
+  * to
+  * a
+  * template
+images:
+- name: panamax_panamax-docker-wordpress_latest
+  source: panamax/panamax-docker-wordpress:latest
+  type: Default
