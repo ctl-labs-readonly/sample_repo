@@ -1,0 +1,49 @@
+---
+name: backporttest
+description: this is a my backport test desription
+keywords: ''
+type: Drupal
+documentation: |
+  Wordpress with MySQL
+  ============================
+  The alias for the link between Wordpress and MySQL needs to be _DB_1_. If this is changed, the template will not work.
+
+  I edited this
+images:
+- name: DB
+  source: centurylinklabs/mysql:5.5
+  category: DB Tier
+  type: mysql
+  ports:
+  - host_port: '3306'
+    container_port: '3306'
+    proto: ''
+  - host_port: '3307'
+    container_port: '3307'
+    proto: TCP
+  environment:
+  - variable: MYSQL_ROOT_PASSWORD
+    value: pass@word01
+- name: WP
+  source: centurylinklabs/wordpress:3.9.1
+  category: Web Tier
+  type: wordpress
+  ports:
+  - host_port: '8080'
+    container_port: '80'
+    proto: ''
+  links:
+  - service: DB
+    alias: DB_1
+  environment:
+  - variable: DB_PASSWORD
+    value: pass@word01
+  - variable: DB_NAME
+    value: wordpress
+  volumes:
+  - host_path: "/var"
+    container_path: "/var"
+- name: busybox
+  source: busybox:latest
+  category: new
+  type: Default
